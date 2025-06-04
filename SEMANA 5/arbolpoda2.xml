@@ -1,0 +1,33 @@
+<mxfile host="app.diagrams.net">
+  <diagram>
+    <mxGraphModel>
+      <root>
+        <!-- Nodos y conexiones no podadas (mantienen su estilo original) -->
+        
+        <!-- ========== RAMAS PODADAS ========== -->
+        <!-- CyberLegión: Virus Pandemónium y Desincronización Cuántica se podan -->
+        <mxCell id="CB_VP_L" value="VP(L)=7" style="shape=ellipse;fillColor=#CCCCCC;fontColor=#666666;strokeColor=#FF0000;dashed=1;" vertex="1">
+          <mxGeometry x="180" y="400" width="80" height="40"/>
+        </mxCell>
+        <mxCell id="edge_CB_VP_L" style="endArrow=none;strokeColor=#FF0000;dashed=1;strokeWidth=2;" edge="1" source="MIN_Cyber" target="CB_VP_L"/>
+        
+        <mxCell id="CB_VP_A" value="VP(A)=3" style="shape=ellipse;fillColor=#CCCCCC;fontColor=#666666;strokeColor=#FF0000;dashed=1;" vertex="1">
+          <mxGeometry x="210" y="460" width="80" height="40"/>
+        </mxCell>
+        <mxCell id="edge_CB_VP_A" style="endArrow=none;strokeColor=#FF0000;dashed=1;strokeWidth=2;" edge="1" source="MIN_Cyber" target="CB_VP_A"/>
+        
+        <mxCell id="CB_DC_L" value="DC(L)=6" style="shape=ellipse;fillColor=#CCCCCC;fontColor=#666666;strokeColor=#FF0000;dashed=1;" vertex="1">
+          <mxGeometry x="345" y="440" width="80" height="40"/>
+        </mxCell>
+        <mxCell id="edge_CB_DC_L" style="endArrow=none;strokeColor=#FF0000;dashed=1;strokeWidth=2;" edge="1" source="MIN_Cyber" target="CB_DC_L"/>
+        
+        <mxCell id="CB_DC_A" value="DC(A)=2" style="shape=ellipse;fillColor=#CCCCCC;fontColor=#666666;strokeColor=#FF0000;dashed=1;" vertex="1">
+          <mxGeometry x="265" y="560" width="80" height="40"/>
+        </mxCell>
+        <mxCell id="edge_CB_DC_A" style="endArrow=none;strokeColor=#FF0000;dashed=1;strokeWidth=2;" edge="1" source="MIN_Cyber" target="CB_DC_A"/>
+
+        <!-- Otras ramas mantienen su estilo original -->
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

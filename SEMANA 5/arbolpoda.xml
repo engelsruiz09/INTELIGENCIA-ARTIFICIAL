@@ -1,0 +1,109 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
+  <diagram id="PdadoMinimaxPodado" name="Árbol Minimax Podado">
+    <mxGraphModel dx="1434" dy="884" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MAX" value="MAX (SupremoBrain)" style="shape=triangle;direction=north;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="460" y="40" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="MIN_Neuro" value="MIN (CaosMaster)" style="shape=triangle;direction=south;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=12;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="140" y="170" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_Neuro" value="NeuroDominio" style="endArrow=block;" parent="1" source="MAX" target="MIN_Neuro" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MIN_Cyber" value="MIN (CaosMaster)" style="shape=triangle;direction=south;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=12;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="360" y="170" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_Cyber" value="CyberLegión" style="endArrow=block;" parent="1" source="MAX" target="MIN_Cyber" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MIN_Quantum" value="MIN (CaosMaster)" style="shape=triangle;direction=south;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=12;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="580" y="170" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_Quantum" value="QuantumOverlord" style="endArrow=block;" parent="1" source="MAX" target="MIN_Quantum" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MIN_Neural" value="MIN (CaosMaster)" style="shape=triangle;direction=south;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=12;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="800" y="170" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_Neural" value="NeuralHegemonía" style="endArrow=block;" parent="1" source="MAX" target="MIN_Neural" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ND_CF" value="CF =&gt; min(3,1)=1" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="20" y="260" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_ND_CF" value="Cortafuegos" style="endArrow=none;" parent="1" source="MIN_Neuro" target="ND_CF" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ND_VP" value="Virus =&gt; min(5,2)=2" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="70" y="360" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_ND_VP" value="Virus" style="endArrow=none;" parent="1" source="MIN_Neuro" target="ND_VP" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ND_DC" value="Desync =&gt; min(4,0)=0" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="150" y="450" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_ND_DC" value="Desync" style="endArrow=none;" parent="1" source="MIN_Neuro" target="ND_DC" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CB_CF" value="CF =&gt; min(-1,-3)=-3" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="260" y="300" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_CB_CF" value="Cortafuegos" style="endArrow=none;" parent="1" source="MIN_Cyber" target="CB_CF" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CB_VP" value="Virus =&gt; (PODADO)" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=10;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="370" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_CB_VP" value="Virus" style="endArrow=none;dashed=1;strokeColor=#888888;" parent="1" source="MIN_Cyber" target="CB_VP" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CB_DC" value="Desync =&gt; (PODADO)" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=10;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="425" y="420" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_CB_DC" value="Desync" style="endArrow=none;dashed=1;strokeColor=#888888;" parent="1" source="MIN_Cyber" target="CB_DC" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QO_CF" value="CF =&gt; min(0,-2)=-2" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="500" y="290" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_QO_CF" value="Cortafuegos" style="endArrow=none;" parent="1" source="MIN_Quantum" target="QO_CF" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QO_VP" value="Virus =&gt; min(9,4)=4" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="680" y="340" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_QO_VP" value="Virus" style="endArrow=none;" parent="1" source="MIN_Quantum" target="QO_VP" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QO_DC" value="Desync =&gt; min(5,1)=1" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="590" y="450" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_QO_DC" value="Desync" style="endArrow=none;" parent="1" source="MIN_Quantum" target="QO_DC" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NH_CF" value="CF =&gt; min(2,-1)=-1" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="980" y="250" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_NH_CF" value="Cortafuegos" style="endArrow=none;" parent="1" source="MIN_Neural" target="NH_CF" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NH_VP" value="Virus =&gt; min(8,3)=3" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="900" y="370" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_NH_VP" value="Virus" style="endArrow=none;" parent="1" source="MIN_Neural" target="NH_VP" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NH_DC" value="Desync =&gt; min(7,4)=4" style="ellipse;html=1;align=center;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="810" y="450" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_NH_DC" value="Desync" style="endArrow=none;" parent="1" source="MIN_Neural" target="NH_DC" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

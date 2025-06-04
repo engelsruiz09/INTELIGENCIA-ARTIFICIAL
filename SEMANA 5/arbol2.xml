@@ -1,0 +1,48 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <!-- Nivel 1: MAX (SupremoBrain) -->
+    <mxCell id="2" value="SupremoBrain (MAX)" style="shape=triangle;direction=north;fillColor=#4CAF50;strokeColor=#388E3C;" parent="1" vertex="1">
+      <mxGeometry x="400" y="20" width="100" height="80"/>
+    </mxCell>
+    <!-- Estrategias de SupremoBrain -->
+    <mxCell id="3" value="NeuroDominio Global" style="shape=triangle;direction=north;fillColor=#4CAF50;strokeColor=#388E3C;" parent="1" vertex="1">
+      <mxGeometry x="100" y="120" width="80" height="60"/>
+    </mxCell>
+    <mxCell id="4" value="CyberLegión" style="shape=triangle;direction=north;fillColor=#4CAF50;strokeColor=#388E3C;" parent="1" vertex="1">
+      <mxGeometry x="300" y="120" width="80" height="60"/>
+    </mxCell>
+    <mxCell id="5" value="QuantumOverlord" style="shape=triangle;direction=north;fillColor=#4CAF50;strokeColor=#388E3C;" parent="1" vertex="1">
+      <mxGeometry x="500" y="120" width="80" height="60"/>
+    </mxCell>
+    <mxCell id="6" value="NeuralHegemonía" style="shape=triangle;direction=north;fillColor=#4CAF50;strokeColor=#388E3C;" parent="1" vertex="1">
+      <mxGeometry x="700" y="120" width="80" height="60"/>
+    </mxCell>
+    <!-- Nivel 2: MIN (CaosMaster) -->
+    <mxCell id="7" value="Cortafuegos Cósmico" style="shape=triangle;direction=south;fillColor=#F44336;strokeColor=#D32F2F;" parent="1" vertex="1">
+      <mxGeometry x="50" y="220" width="80" height="60"/>
+    </mxCell>
+    <mxCell id="8" value="Virus Pandemónium" style="shape=triangle;direction=south;fillColor=#F44336;strokeColor=#D32F2F;" parent="1" vertex="1">
+      <mxGeometry x="150" y="220" width="80" height="60"/>
+    </mxCell>
+    <mxCell id="9" value="Desincronización Cuántica" style="shape=triangle;direction=south;fillColor=#F44336;strokeColor=#D32F2F;" parent="1" vertex="1">
+      <mxGeometry x="250" y="220" width="80" height="60"/>
+    </mxCell>
+    <!-- Repetir para las otras estrategias (CyberLegión, QuantumOverlord, NeuralHegemonía) -->
+    <!-- ... -->
+    <!-- Hojas (Valores de Utilidad) -->
+    <mxCell id="10" value="3" style="shape=rectangle;fillColor=#BDBDBD;strokeColor=#757575;" parent="1" vertex="1">
+      <mxGeometry x="30" y="320" width="40" height="30"/>
+    </mxCell>
+    <mxCell id="11" value="1" style="shape=rectangle;fillColor=#BDBDBD;strokeColor=#757575;" parent="1" vertex="1">
+      <mxGeometry x="80" y="320" width="40" height="30"/>
+    </mxCell>
+    <!-- ... Agregar todas las hojas según la tabla -->
+    <!-- Conexiones -->
+    <mxCell id="12" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" edge="1" source="3" target="7"/>
+    <mxCell id="13" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" edge="1" source="3" target="8"/>
+    <mxCell id="14" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" edge="1" source="3" target="9"/>
+    <!-- ... Conectar todas las estrategias con sus contraataques y hojas -->
+  </root>
+</mxGraphModel>
