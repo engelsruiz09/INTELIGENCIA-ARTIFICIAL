@@ -1,0 +1,29 @@
+# RESPUESTAS
+
+1. Identificar cuál modelo tuvo mejor desempeño según f1_score y justificarlo 
+    R// Dada la experimentacion de este laboratorio, el modelo que destaco por su rendimiento especificamente al evaluar el F1-score fue la maquina de vectores de soporte mas conococida como (SVM) dicho modelo alcanzo una puntuacion de F1 de 0.5963. Dicho modelo logro en este caso ser suficientemente preciso en sus predicciones positivas sin dejar de capturar una buena porcion de los casos relevantes. Con la implementacion del kernel RBF contribuyo significativamente a este resultado, permitiendo el modelado de relaciones no lineales complejas presentes en los datos de recursos humanos 
+
+2. Comenta ventajas/desventajas observadas entre SVM, Perceptrón y Red Neuronal 
+    R// 
+    Support Vector Machine (SVM):
+
+    VENTAJAS: Presenta el F1-Score mAs elevado del conjunto evaluado, demuestra alta sensibilidad en la deteccion de casos relevantes, y su configuracion con kernel RBF facilita el procesamiento de patrones no lineales
+
+    DESVENTAJAS: Exhibe limitaciones en terminos de precision, lo que resulta en una tasa elevada de falsos positivos, y puede presentar desafios de escalabilidad
+
+    Perceptron:
+
+    VENTAJAS: Ofrece simplicidad en su implementacion y eficiencia computacional durante el entrenamiento, facilitando la interpretacion de resultados
+    
+    DESVENTAJAS: Muestra el rendimiento más bajo en todas las metricas evaluadas y su naturaleza lineal limita su capacidad para modelar relaciones complejas
+
+    Red Neuronal:
+
+    VENTAJAS: Alcanza la mayor precision entre los modelos evaluados y cuenta con mecanismos de regularizacion que controlan el sobreajuste, La arquitectura empleada (multiples capas densas, funciones de activacion ReLU, tecnicas de regularizacion como Dropout y L2) es una plantilla de una red simple y potente para datos tabulares, la red neuronal tiene mayor potencial que los otros dos modelos de prediccion por contar con mayores tecnicas de entrenamiento
+    
+    DESVENTAJAS: Presenta un recall inferior que limita su capacidad de deteccion, requiere mayor poder computacional y es susceptible al sobreajuste con conjuntos de datos reducidos
+
+3. Proponer al menos una mejora o justificación en los resultados obtenidos
+    R// Hacer una limpieza de datos mas profunda, ver que variables influyen mas en la variable target, ver correlaciones entre variables, esto implica hacer una ingenieria de caracteristicas mas exhaustiva. Mejorar el manejo de variables desbalanceadas usando k-folds, Aplicar metodos de machine learning para imputacion de valores y outliers para mejorar la distribucion normal de los datos. Buscar los mejores hiperparametros para cada modelo de prediccion usando tecnicas como searchgrid para entrenar con los mejores hiperparametros esto aplica para perceptron y SVM, para redes neuronales aplicar tecnicas de earlingstop para maximizar la exactitud del train y minimizar la perdida de train y la de evaluacion.
+
+    De acuerdo a los resultados obtenidos de las metricas se puede observar que los 3 metodos presentan overfitting esto sugiere que se debe mejorar en los puntos ya mencionados anteriormente

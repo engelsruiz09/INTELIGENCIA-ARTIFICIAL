@@ -1,0 +1,75 @@
+{
+  "tests": [
+    {
+      "name": "SVM entrenado y evaluado",
+      "setup": "",
+      "run": "pytest tests/test_svm.py --json-report --json-report-file=results/test_svm.json",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "points": 10
+    },
+    {
+      "name": "Perceptrón entrenado y evaluado",
+      "setup": "",
+      "run": "pytest tests/test_perceptron.py --json-report --json-report-file=results/test_perceptron.json",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "points": 10
+    },
+    {
+      "name": "Red neuronal en Keras",
+      "setup": "",
+      "run": "pytest tests/test_nn.py --json-report --json-report-file=results/test_nn.json",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "points": 10
+    },
+    {
+      "name": "Codificación de variables categóricas",
+      "setup": "",
+      "run": "pytest tests/test_encoding.py --json-report --json-report-file=results/test_encoding.json",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "points": 10
+    },
+    {
+      "name": "Imputación de valores faltantes",
+      "setup": "",
+      "run": "pytest tests/test_preprocessing_empty.py --json-report --json-report-file=results/test_preprocessing.json",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "points": 10
+    },
+    {
+      "name": "Reporte evaluation_report.csv generado correctamente",
+      "setup": "",
+      "run": "pytest tests/test_metrics_file.py --json-report --json-report-file=results/test_metrics_file.json",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "points": 10
+    },
+    {
+      "name": "Carga del dataset original",
+      "setup": "",
+      "run": "pytest tests/test_dataset_load.py --json-report --json-report-file=results/test_dataset_load.json",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "points": 10
+    }
+  ],
+  "setup": {
+    "commands": [
+      "pip install -r requirements.txt"
+    ]
+  },
+  "teardown": {
+    "commands": []
+  }
+}

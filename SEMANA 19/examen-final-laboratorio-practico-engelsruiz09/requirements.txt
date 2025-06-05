@@ -1,0 +1,7 @@
+pandas
+scikit-learn
+numpy
+tensorflow
+keras
+pytest
+pytest-json-report

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Reconocimiento ASL – MediaPipe</title>
+
+  <!-- Fuente & estilos base -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- MediaPipe Hands + Camera -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+
+  <style>
+    :root{
+      --bg:#fafafa; --card:#fff; --primary:#4f46e5; --accent:#22c55e;
+      --text:#111827; --muted:#6b7280;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);
+         display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:32px}
+    h2{font-weight:700;margin-bottom:24px}
+
+    .video-wrap{position:relative;width:640px;height:480px;border-radius:16px;
+      overflow:hidden;background:#000;box-shadow:0 8px 24px rgba(0,0,0,.12);}
+    video,canvas{position:absolute;top:0;left:0;width:100%;height:100%}
+
+    #label{font-size:3rem;font-weight:700;margin:24px 0;min-height:3.5rem}
+    .controls{display:flex;gap:12px;margin:20px 0}
+    button{padding:8px 18px;border:none;border-radius:8px;background:var(--primary);
+      color:#fff;font-weight:500;cursor:pointer;transition:filter .2s}
+    button:disabled{filter:grayscale(.4);}
+    .status{color:var(--muted);font-size:.9rem}
+    pre{max-width:760px;margin-top:20px;padding:16px;background:var(--card);border-radius:12px;
+        border:1px solid #e5e7eb;overflow:auto;display:none;}
+    pre.show{display:block}
+  </style>
+</head>
+<body>
+
+<h2>Reconocimiento ASL con MediaPipe</h2>
+
+<div class="video-wrap">
+  <video id="cam" muted playsinline></video>
+  <canvas id="out" width="640" height="480"></canvas>
+</div>
+
+<div id="label">···</div>
+
+<div class="controls">
+  <button id="startBtn">Iniciar cámara</button>
+  <button id="debugBtn">Debug</button>
+</div>
+<div class="status" id="status">Cámara detenida</div>
+<pre id="debug"></pre>
+
+<script>
+/* -------- elementos básicos -------- */
+const videoEl = document.getElementById('cam');
+const canvas  = document.getElementById('out');
+const ctx     = canvas.getContext('2d');
+const lblEl   = document.getElementById('label');
+const statusEl= document.getElementById('status');
+const debugEl = document.getElementById('debug');
+const startBtn= document.getElementById('startBtn');
+const debugBtn= document.getElementById('debugBtn');
+
+/* -------- CSRF helper -------- */
+const csrftoken = document.cookie.split('; ')
+  .find(r=>r.startsWith('csrftoken='))?.split('=')[1];
+
+/* -------- MediaPipe Hands -------- */
+const hands = new Hands({ locateFile: f =>
+  `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${f}` });
+hands.setOptions({
+  maxNumHands:1, modelComplexity:1,
+  minDetectionConfidence:0.5, minTrackingConfidence:0.5
+});
+hands.onResults(onResults);
+
+/* -------- Cámara -------- */
+const camera = new Camera(videoEl, {
+  onFrame: async () => { await hands.send({image: videoEl}); },
+  width:640, height:480
+});
+
+/* -------- Botón start/stop -------- */
+let camActive = false;
+startBtn.onclick = () => {
+  if(!camActive){
+    camera.start();
+    startBtn.textContent='Detener cámara';
+    statusEl.textContent='Detectando manos…';
+    camActive=true;
+  }else{
+    camera.stop();
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    lblEl.textContent='···';
+    startBtn.textContent='Iniciar cámara';
+    statusEl.textContent='Cámara detenida';
+    camActive=false;
+  }
+};
+
+/* -------- Debug toggle -------- */
+debugBtn.onclick = ()=> debugEl.classList.toggle('show');
+
+/* -------- Envío al backend -------- */
+let lastSend = 0, SEND_MS = 1000;
+async function sendFrame() {
+  const tmp = document.createElement('canvas');
+  tmp.width=256; tmp.height=256;
+  tmp.getContext('2d').drawImage(videoEl,0,0,tmp.width,tmp.height);
+  tmp.toBlob(async blob=>{
+    const fd=new FormData(); fd.append('frame',blob,'f.jpg');
+    const res=await fetch('/translator/predict_frame/',{
+      method:'POST',body:fd,credentials:'same-origin',
+      headers:{'X-CSRFToken':csrftoken}
+    });
+    if(res.ok){
+      const data=await res.json();
+      lblEl.textContent = `${data.letter}  ${(data.conf*100).toFixed(1)}%`;
+      debugEl.textContent=JSON.stringify(data,null,2);
+    }
+  },'image/jpeg',0.8);
+}
+
+/* -------- Callback de MediaPipe -------- */
+function onResults(r){
+  ctx.save();
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.drawImage(r.image,0,0,canvas.width,canvas.height);
+
+  if(r.multiHandLandmarks?.length){
+    const lm=r.multiHandLandmarks[0];
+    drawConnectors(ctx,lm,HAND_CONNECTIONS,{color:'#00FF00',lineWidth:5});
+    drawLandmarks(ctx,lm,{color:'#FF0000',lineWidth:2});
+    const now=Date.now();
+    if(now-lastSend>SEND_MS){ lastSend=now; sendFrame(); }
+  }
+  ctx.restore();
+}
+</script>
+</body>
+</html>
